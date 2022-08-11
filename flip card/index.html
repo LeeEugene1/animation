@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=chrome">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Game</title>
+    <style>
+        :root{
+            --primary:#ffce00;
+            --secondary:#fe4880;
+            --dark:#212121;
+            --light:#f3f3f3;
+        }
+        *{
+            margin:0;
+            padding:0;
+        }
+        .card{
+            width: 400px;
+            height:600px;
+            margin:100px auto 0;
+            perspective: 1000px;
+        }
+        .card__inner{
+            width: 100%;
+            height: 100%;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+            position: relative;
+        }
+        .card__inner.is-flipped{
+            transform: rotateY(180deg);
+        }
+        .card__face{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            overflow: hidden;
+            background-color: yellow;
+        }
+        .card__face--front{
+            background-image: linear-gradient(to bottom right, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content:center;
+        }
+        .card__face--back{
+            background-color: var(--light);
+            transform: rotateY(180deg);            
+        }
+        .card__content{
+            width: 100%;
+            height: 100%;
+        }
+        .card__header{
+            position: relative;
+            padding: 30px 30px 40px;
+        }
+        .card__header:after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            border-radius: 0 0 50% 0;
+            background-image: linear-gradient(to bottom left, var(--primary) 10%, var(--secondary) 115%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card__inner">
+            <div class="card__face card__face--front">
+                <h2>FRONT</h2>
+            </div>
+            <div class="card__face card__face--back">
+                <div class="card__content">
+                    <div class="card__header">
+                        <img src="" alt="">
+                        <h2>BACK</h2>
+                    </div>
+                    <div class="card__body">
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio quos reprehenderit possimus excepturi voluptatem blanditiis consequuntur, voluptas repellendus officiis ab vitae architecto, ratione et minus unde? Quo aperiam provident labore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const card = document.querySelector('.card__inner')
+        card.addEventListener('click',()=>{
+            card.classList.toggle('is-flipped')
+        })
+    </script>
+</body>
+</html>
