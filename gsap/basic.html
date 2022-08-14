@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    
+    <title>Document</title>
+    <style>
+        .box1{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+        .box2{
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+
+    <script>
+        let hello = () => {
+            alert('hi')
+        }
+        let move = {
+            left:"100px",
+            top:"50px",
+            rotation:180,
+            scale:0.5,
+            opacity:0,
+
+            // ease: Elastic.easeOut//왔다갔다.
+            //ease:Back.easeOut,
+            //ease:Bounce.easeOut,
+            ease: Power1.easeOut,
+        }
+        let move2 = {
+            left:"100px",
+            top:"50px",
+            rotation:180,
+            scale:0.5,
+            opacity:0,
+
+            // ease: Elastic.easeOut//왔다갔다.
+            //ease:Back.easeOut,
+            //ease:Bounce.easeOut,
+            ease: Power1.easeOut,
+            delay:1.5,//box1끝나고 시작했으면 하니까
+            onComplete:hello
+        }
+        //gsap.to('.box1', 1.5, move)//class||Id, sec, function
+        TweenMax.from('.box1', 1.5, move)
+        TweenMax.to('.box2', 1.5, move2)
+
+    </script>
+</body>
+</html>
